@@ -13,11 +13,20 @@ But remind this is a learning for me I try to share.
 ##Prerequires
 ---
 
-First you need a hypervisor. I use VirtualBox https://www.virtualbox.org/ 
-Then you need Vagrant. Find it here: https://www.vagrantup.com/
-Just install it anywhere. Under Windows check the default path. You may want to change it. 
+- First you need a hypervisor. I use VirtualBox https://www.virtualbox.org/ 
+- Then you need Vagrant. Find it here: https://www.vagrantup.com/ Just install it anywhere. Under Windows check the default path. You may want to change it. 
 
 ---
+
+##Set up vagrant
+Just open a comandline in the directory an type in 
+`vagrant init`
+That creates your initial Vagrantfile. Here you configure all your things...
+
+Next I added some parts for the VM configuration. Initially only the available memory.
+
+Then add the chef_zero provisioner. I decided to put all chef files in a separate folder called chef.
+Just add a folder cookbooks in chef and put all your cookbooks there. I started with a simple HelloWorld example.
 
 ##License and Author
 
