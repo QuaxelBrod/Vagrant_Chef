@@ -38,7 +38,14 @@ Hint: If you get compile errors check if you have installed 32 or 64 Bit version
 installation. Test the installation with `gem install json --platform=ruby`
 
 #####Chefdk
-That is the chef development kit. 
+That is the chef development kit. Keep in mind tat if Ruby is already installed ChefDk brings it own embedded ruby.
+If you want to invoke embedded ruby or other tools you need to preface your command with `chef exec`.
+During my installation the path was not modified correctly. I had to manually add the $Path$ to the users path.
+Here is the output of the differen ruby versions:
+`C:\Users\Devel>ruby --version    
+ruby 2.2.3p173 (2015-08-18 revision 51636) [i386-mingw32]  
+C:\Users\Devel>chef exec ruby --version  
+ruby 2.1.6p336 (2015-04-13 revision 50298) [i386-mingw32]`
 
 ####knife solo
 knife is the right tool to configure (not at all) chef cookbooks. For chef configurations you need knife to struggle 
@@ -55,14 +62,17 @@ There is a vagrant-berkshelf plugin. To install and enable it just type:
 `vagrant plugin install vagrant-berkshelf`
 Then add a config line to the vagrant config file:
 `config.berkshelf.enabled = true`
+`config.berkshelf.berksfile_path = 'chef_solo/Berksfile'`
 ! Berkshelf needs chefdk 
 
-Do not install berkshelf via roby gems. That is not recommended.
+Do not install berkshelf via ruby gems. That is not recommended.
 
-###Do some thing
+###Do some things
 now lets try to setup a new cookbook hirarchy:
 `knife solo init knife_solo`
-This creates a new directory chef_solo. 
+This creates a new directory chef_solo. Double check if the Berksfile is created.
+
+
 
 
 
