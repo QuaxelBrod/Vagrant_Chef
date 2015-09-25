@@ -28,6 +28,17 @@ Next I added some parts for the VM configuration. Initially only the available m
 Then add the chef_zero provisioner. I decided to put all chef files in a separate folder called chef.
 Just add a folder cookbooks in chef and put all your cookbooks there. I started with a simple HelloWorld example.
 
+## do some additional usefull magic
+There are many cookbooks around. Hopefully we do not need to download them and maintain them on out own. Think the chef server
+witch is simulated by chef solo should do all this stuff.
+Lets start
+### Add some tools (tools is all we need ;) )
+On the command line install bundler:
+`gem install bundler`
+With bundler you can setup project specific gems. gems are like librarys for ruby. So one can enssure that if someone 
+checkout the project all you need is to run bundle install and all ruby libraries are up with the right version.
+
+
 ##License and Author
 
 Project was created by QuaxelBrod
