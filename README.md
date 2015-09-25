@@ -8,6 +8,12 @@ This Project is to learn something about
 Maybe I will add some words for you to follow my learnings. You are welcome to give me input or ask questions.
 But remind this is a learning for me I try to share.
 
+This tutorial is spited in different parts (chapters). You can find them in the according branches. 
+---
+
+#Chapter 1
+Set up the basis
+
 ---
 
 ##Prerequires
