@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "debian/jessie64"
 
   # enable berkshelf
-  config.berkshelf.enabled = true
+  #config.berkshelf.enabled = true
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
