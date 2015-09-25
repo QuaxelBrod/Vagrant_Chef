@@ -11,7 +11,8 @@ Vagrant.configure(2) do |config|
   config.vm.box = "debian/jessie64"
 
   # enable berkshelf
-  #config.berkshelf.enabled = true
+  config.berkshelf.enabled = true
+  config.berkshelf.berksfile_path = 'chef_solo/Berksfile'
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -47,11 +48,11 @@ Vagrant.configure(2) do |config|
 
   # bacause I want to learn something about chef i configure a chef-solo provisioner
   config.vm.provision "chef_zero" do |chef|
-    chef.cookbooks_path = "chef/cookbooks"
-    chef.data_bags_path = "chef/data_bags"
-    chef.roles_path = "chef/roles"
+#    chef.cookbooks_path = "chef/cookbooks"
+#    chef.data_bags_path = "chef/data_bags"
+#    chef.roles_path = "chef/roles"
 
-    chef.add_recipe "HelloWorld"
+#    chef.add_recipe "HelloWorld"
   end
 
 end

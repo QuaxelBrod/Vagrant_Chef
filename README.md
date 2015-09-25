@@ -68,14 +68,15 @@ Then add a config line to the vagrant config file:
 Do not install berkshelf via ruby gems. That is not recommended.
 
 ###Do some things
-now lets try to setup a new cookbook hirarchy:
+Now lets try to setup a new cookbook hirarchy:
 `knife solo init knife_solo`
 This creates a new directory chef_solo. Double check if the Berksfile is created.
 
-
-
-
-
+Now I am able to start a new VirtualBox image without any configurations, but also without errors...
+Lets cook:
+I try to reinvent my HelloWorls Cookbook in the new setup:
+´knife cookbook create -o chef_solo/site-cookbooks HelloWorld`
+That creates a bootstrap cookbook. Visit your subdirectory to see what knife did.
 
 
 
