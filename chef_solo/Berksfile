@@ -2,4 +2,5 @@ source "https://supermarket.chef.io"
 
 metadata
 
-#cookbook 'HelloWorld', path: 'site-cookbooks/HelloWorld'
+cookbook 'apt', '~> 2.8.2'
+cookbook 'HelloWorld', path: 'site-cookbooks/HelloWorld'
