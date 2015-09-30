@@ -80,6 +80,9 @@ I try to reinvent my HelloWorls Cookbook in the new setup:
 That creates a bootstrap cookbook. Visit your subdirectory to see what knife did.
 Now Just copy the content of the old cookbook HelloWorld to the newly generated 
 chef_solo/site-cookbooks/HelloWorld/recipes/default.rb
+Ther should be an file named `Berksfile` inside your chef_solo directory. This is needed to tell berkshelf where to 
+find all your cookbooks. If it is not there create one and add the cookbook HelloWorld to it:
+`cookbook 'HelloWorld', path: 'site-cookbooks/HelloWorld'`
 Now you can provision your vagrant box:
 If it is running: `vagrant provision`
 Otherwise `vagrant up`
