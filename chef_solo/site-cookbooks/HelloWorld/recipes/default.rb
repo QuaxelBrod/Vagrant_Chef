@@ -8,4 +8,4 @@
 
 
 # Print Hallo Welt
-Chef::Log.info "hallo Welt"
+Chef::Log.info "Hello Worldg"

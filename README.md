@@ -67,6 +67,7 @@ Then add a config line to the vagrant config file:
 
 Do not install berkshelf via ruby gems. That is not recommended.
 
+
 ###Do some things
 Now lets try to setup a new cookbook hirarchy:
 `knife solo init knife_solo`
@@ -84,25 +85,9 @@ If it is running: `vagrant provision`
 Otherwise `vagrant up`
 If you have troubles with errors try
 `vagrant halt` to stop the machine, `vagrant destroy` to delete the image and `vagrant up` to start a new box.
-
-
-##Need a hack
-install: `vagrant plugin install vagrant-triggers`
-add: 
-`  # Hack for a silly bug...
-   config.trigger.before [:reload, :up, :provision], stdout: true do
-     SYNCED_FOLDER = ".vagrant/machines/default/virtualbox/synced_folders"
-     info "Trying to delete folder #{SYNCED_FOLDER}"
-     # system "rm #{SYNCED_FOLDER}"
-     begin
-       File.delete(SYNCED_FOLDER)
-     rescue Exception => ex
-       warn "Could not delete folder #{SYNCED_FOLDER}."
-       warn ex.message
-     end
-   end`
-to Vagrantfile
-
+An other thing to check is if chef_solo/Berksfile.lock is available. This contains the output from berks. You can 
+manually create that file if you go to chef_solo and typr `berks` on comandline
+ 
 ##License and Author
 
 Project was created by QuaxelBrod
