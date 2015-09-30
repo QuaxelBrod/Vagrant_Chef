@@ -10,23 +10,20 @@ But remind this is a learning for me I try to share.
 
 ---
 
-##Prerequires
+Here I trie to note my experience to setup vagrant and chef. In the first steps I use selfcontained configurations. 
+That means, I can put all things I need for dedicated Projects to a subdirectory, where all vagrant and chef things 
+live. If someone else checks out this project all he need is to call vagrant up on the commandline and there is a 
+functional environment for development..
+
 ---
 
-- First you need a hypervisor. I use VirtualBox https://www.virtualbox.org/ 
-- Then you need Vagrant. Find it here: https://www.vagrantup.com/ Just install it anywhere. Under Windows check the default path. You may want to change it. 
-
+##Manual
 ---
 
-##Set up vagrant
-Just open a comandline in the directory an type in 
-`vagrant init`
-That creates your initial Vagrantfile. Here you configure all your things...
+I tried to make some chapters for different things.
+Just check the branches.
 
-Next I added some parts for the VM configuration. Initially only the available memory.
 
-Then add the chef_zero provisioner. I decided to put all chef files in a separate folder called chef.
-Just add a folder cookbooks in chef and put all your cookbooks there. I started with a simple HelloWorld example.
 
 ##License and Author
 
