@@ -1,7 +1,7 @@
 name             'HelloWorld'
-maintainer       'YOUR_COMPANY_NAME'
+maintainer       'Quaxel'
 maintainer_email 'YOUR_EMAIL'
-license          'All rights reserved'
+license          'MIT'
 description      'Installs/Configures HelloWorld'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'

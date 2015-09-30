@@ -75,10 +75,33 @@ This creates a new directory chef_solo. Double check if the Berksfile is created
 Now I am able to start a new VirtualBox image without any configurations, but also without errors...
 Lets cook:
 I try to reinvent my HelloWorls Cookbook in the new setup:
-´knife cookbook create -o chef_solo/site-cookbooks HelloWorld`
+`knife cookbook create -o chef_solo/site-cookbooks HelloWorld`
 That creates a bootstrap cookbook. Visit your subdirectory to see what knife did.
+Now Just copy the content of the old cookbook HelloWorld to the newly generated 
+chef_solo/site-cookbooks/HelloWorld/recipes/default.rb
+Now you can provision your vagrant box:
+If it is running: `vagrant provision`
+Otherwise `vagrant up`
+If you have troubles with errors try
+`vagrant halt` to stop the machine, `vagrant destroy` to delete the image and `vagrant up` to start a new box.
 
 
+##Need a hack
+install: `vagrant plugin install vagrant-triggers`
+add: 
+`  # Hack for a silly bug...
+   config.trigger.before [:reload, :up, :provision], stdout: true do
+     SYNCED_FOLDER = ".vagrant/machines/default/virtualbox/synced_folders"
+     info "Trying to delete folder #{SYNCED_FOLDER}"
+     # system "rm #{SYNCED_FOLDER}"
+     begin
+       File.delete(SYNCED_FOLDER)
+     rescue Exception => ex
+       warn "Could not delete folder #{SYNCED_FOLDER}."
+       warn ex.message
+     end
+   end`
+to Vagrantfile
 
 ##License and Author
 

@@ -34,6 +34,22 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
+
+  # Hack for a silly bug...
+  config.trigger.before [:reload, :up, :provision], stdout: true do
+    SYNCED_FOLDER = ".vagrant/machines/default/virtualbox/synced_folders"
+    info "Trying to delete folder #{SYNCED_FOLDER}"
+    # system "rm #{SYNCED_FOLDER}"
+    begin
+      File.delete(SYNCED_FOLDER)
+    rescue Exception => ex
+      warn "Could not delete folder #{SYNCED_FOLDER}."
+      warn ex.message
+    end
+  end
+
+
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -48,11 +64,11 @@ Vagrant.configure(2) do |config|
 
   # bacause I want to learn something about chef i configure a chef-solo provisioner
   config.vm.provision "chef_zero" do |chef|
-#    chef.cookbooks_path = "chef/cookbooks"
-#    chef.data_bags_path = "chef/data_bags"
-#    chef.roles_path = "chef/roles"
+    chef.cookbooks_path = ["chef_solo/site-cookbooks","chef_solo/cookbooks"]
+    chef.data_bags_path = "chef_solo/data_bags"
+    chef.roles_path = "chef_solo/roles"
 
-#    chef.add_recipe "HelloWorld"
+    chef.add_recipe "HelloWorld"
   end
 
 end
