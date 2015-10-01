@@ -4,3 +4,4 @@ metadata
 
 cookbook 'apt', '~> 2.8.2'
 cookbook 'HelloWorld', path: 'site-cookbooks/HelloWorld'
+cookbook 'LearnNginx', path: 'site-cookbooks/LearnNginx'
