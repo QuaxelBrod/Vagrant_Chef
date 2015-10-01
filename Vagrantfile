@@ -44,11 +44,11 @@ Vagrant.configure(2) do |config|
 
   # bacause I want to learn something about chef i configure a chef-solo provisioner
   config.vm.provision "chef_zero" do |chef|
-    chef.cookbooks_path = "chef/cookbooks"
-    chef.data_bags_path = "chef/data_bags"
-    chef.roles_path = "chef/roles"
+#    chef.cookbooks_path = "chef/cookbooks"
+#    chef.data_bags_path = "chef/data_bags"
+#    chef.roles_path = "chef/roles"
 
-    chef.add_recipe "HelloWorld"
+#    chef.add_recipe "HelloWorld"
   end
 
 end
