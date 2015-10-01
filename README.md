@@ -46,7 +46,7 @@ again.
 Now open a browser and go to http://127.0.0.1:8081 
 
 #### Private Network
-Vagrant file gives good suggestions, how to use netork configurations. Test the other ones
+Vagrant file gives good suggestions, how to use network configurations. Test the other ones
 
 
 
