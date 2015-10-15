@@ -53,8 +53,7 @@ Vagrant.configure(2) do |config|
     chef.roles_path = "chef_solo/roles"
 
     chef.add_recipe "apt"
-    chef.add_recipe "HelloWorld"
-    chef.add_recipe "LearnNginx"
+    chef.add_recipe "startnodeserver"
   end
 
 end

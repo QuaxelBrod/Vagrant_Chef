@@ -3,5 +3,7 @@ source "https://supermarket.chef.io"
 metadata
 
 cookbook 'apt', '~> 2.8.2'
+cookbook 'nodejs', '~> 2.4.2'
 cookbook 'HelloWorld', path: 'site-cookbooks/HelloWorld'
 cookbook 'LearnNginx', path: 'site-cookbooks/LearnNginx'
+cookbook 'startnodeserver', path: 'site-cookbooks/startnodeserver'

@@ -1,4 +1,5 @@
 /chef_solo/Berksfile.lock
+/nodeapplication/node_modules
 ## This file ignores JetBrain IDE files and Vagrant runtime files
 
 # Created by .ignore support plugin (hsz.mobi)

@@ -11,42 +11,27 @@ This tutorial is spited in different parts (chapters). You can find them in the 
  
 ---
 
-#Chapter 3
+#Chapter 4
 
-I have learned how to set up a vagrant, chef_solo and berkshelf setup. Fine. What is missing now is to do all the magic 
-with this suer cute cookbooks from chef.io
+Fine. I whant to make som custom configurations on the nginx. Then start a node server with a simple application. After 
+that, there is the need to put the things on different machines and start both with my vagrant file.
 
-### Running apt-update
-First thing we often neet is to update the packetmanager cache and install some packages. Many cookbooks relay on the 
-apt cookbook. So lets fire apt to find out how it works...
-Go to: https://supermarket.chef.io/ and search for `apt` and find this one: https://supermarket.chef.io/cookbooks/apt
-Now you find the code to include this cookbook in Berkshelf:
-`cookbook 'apt', '~> 2.8.2'`
-Just add this line in front of your hello World cookbook in Berksfile
-And fire `vagrant provision`
-And now add some apt things:
-If you just add the cookbook to Vagrant file chef run list he default recipe s started.
-`chef.add_recipe "apt"`
+There is a lot to do with chef (cookbooks, roles and environments) but also with vagrant.
 
-### Installing nginx (1)
-I decided to install nginx to the machine. Here I want to learn how to install packets and do some configuration stuff.
-So start to setup a coockbook as learned with `knife cookbook create -o chef_solo/site-cookbooks LearnNginx`
-I do it this way, because knife creates all the necessary files. You can also create the files by hand.
-Remember to add this to Berksfile. 
-In the default recipe add the line `package nginx` this should do the magic on the VM. Remember to add the recipe to the 
-runlist in the vagrant file.
-Thats it. now I have a running nginx on my box. But now lets have the output in our webbrowser:
-Two ways
+#### Add a node application server
 
-#### Portforwarding
-Configure vagrant to forward a Port from the VM to your local box. That is just like having a ssh with -l:
-Just add a lint to your vagrant file: `config.vm.network "forwarded_port", guest: 80, host: 8081`
-I have used port 8081 because 8080 sometimes make troubles in windows. You may need a `vagrant halt` and `vagrant up` 
-again.
-Now open a browser and go to http://127.0.0.1:8081 
-
-#### Private Network
-Vagrant file gives good suggestions, how to use network configurations. Test the other ones
+As before I start with a cookbook from https://supermarket.chef.io/cookbooks/nodejs
+Add `cookbook 'nodejs', '~> 2.4.2'` to Berksfile and
+`chef.add_recipe "nodejs::nodejs_from_package"` to Vagrantfile.
+This installs the deafult package for node inclusive npm. fine. start it with a simple express app. Find it in 
+`nodeapplication`
+Now I can start the box, ssh in and use `cd /vagrant/nodeapplication` `npm install` `node expressapp.js` to start a 
+node server in my box...
+Lets chef do this things:
+Add new cookbook: `knife cookbook create startnodeserver -o site-cookbooks`
+Add this to Berksfile and add in Vagrantfiles run ist (remove old nodejs recipe).
+I moved the recipes run list to the new cookbook, because if I install the application this are my dependencies. Things 
+should stay together.
 
 
 
