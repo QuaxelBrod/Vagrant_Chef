@@ -1,0 +1,19 @@
+{
+    "name": "nodeapplication",
+    "description": "",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "nodejs": {
+            "version": "0.4.11",
+            "npm": "1.0.30"
+        }
+    },
+    "chef_type": "role",
+    "run_list": [
+        "recipe[apt]",
+        "recipe[nodejs]",
+        "recipe[nodejs::npm]"
+    ]
+}

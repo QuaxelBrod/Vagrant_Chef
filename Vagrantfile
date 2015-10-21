@@ -52,7 +52,7 @@ Vagrant.configure(2) do |config|
     chef.data_bags_path = "chef_solo/data_bags"
     chef.roles_path = "chef_solo/roles"
 
-    chef.add_recipe "apt"
+
     chef.add_recipe "startnodeserver"
   end
 

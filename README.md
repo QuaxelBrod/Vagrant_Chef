@@ -31,7 +31,8 @@ Lets chef do this things:
 Add new cookbook: `knife cookbook create startnodeserver -o site-cookbooks`
 Add this to Berksfile and add in Vagrantfiles run ist (remove old nodejs recipe).
 I moved the recipes run list to the new cookbook, because if I install the application this are my dependencies. Things 
-should stay together.
+should stay together. Rerun provision and all should stay the same. 
+But now I can start my node server from inside my new cookbook.
 
 
 

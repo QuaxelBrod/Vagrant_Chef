@@ -1,0 +1,70 @@
+#!/bin/sh
+
+NAME=nodeapplication
+NODE_BIN_DIR=/usr/bin/node
+NODE_PATH=<%= nodeapplicaion.path %>
+APPLICATION_DIRECTORY=<%= nodeapplication.path %>
+APPLICATION_START=expressapp.js
+PIDFILE=/var/run/expressapp.pid
+LOGFILE=/var/log/expressapp.log
+
+# Add node to the path for situations in which the environment is passed.
+PATH=$NODE_BIN_DIR:$PATH
+# Export all environment variables that must be visible for the Node.js
+# application process forked by Forever. It will not see any of the other
+# variables defined in this script.
+export NODE_PATH=$NODE_PATH
+
+start() {
+    echo "Starting $NAME"
+    cd $APPLICATION_DIRECTORY
+    forever --pidFile $PIDFILE --sourceDir $APPLICATION_DIRECTORY \
+    -a -l $LOGFILE --minUptime 5000 --killSignal SIGTERM --spinSleepTime 2000 -c 'node --debug' \
+    start $APPLICATION_START &
+    RETVAL=$?
+}
+
+stop() {
+    if [ -f $PIDFILE ]; then
+        echo "Shutting down $NAME"
+        forever stop $APPLICATION_START
+        # Get rid of the pidfile, since Forever won't do that.
+        rm -f $PIDFILE
+        RETVAL=$?
+    else
+        echo "$NAME is not running."
+        RETVAL=0
+    fi
+}
+
+restart() {
+    echo "Restarting $NAME"
+    stop
+    start
+}
+
+status() {
+    echo "Status for $NAME:"
+    forever list
+    RETVAL=$?
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    status)
+        status
+    ;;
+    restart)
+        restart
+    ;;
+    *)
+        echo "Usage: {start|stop|status|restart}"
+        exit 1
+    ;;
+esac
+exit $RETVAL
